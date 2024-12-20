@@ -42,14 +42,10 @@ def main():
     st.title("Invoice Parser")
 
     uploaded_file = st.file_uploader("Upload a PDF", type="pdf")
-    if uploaded_file is not None:
-        file_path = os.path.join(os.getcwd(), uploaded_file.name)
-        with open(file_path, "wb") as f:
-            f.write(uploaded_file.getbuffer())
     
     if st.button("OK"):
         if uploaded_file is not None:
-            process_invoice(file_path)
+            process_invoice(uploaded_file)
         else:
             st.write("Please upload a PDF file first.")
 

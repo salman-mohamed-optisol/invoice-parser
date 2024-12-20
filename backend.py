@@ -25,20 +25,19 @@ class Invoice(BaseModel):
     po_number: str
 
 
-def ocr_extraction(pdf_path):
-    print(f"INFO: OCR extraction started for the file {pdf_path}")
+def ocr_extraction(file_content):
+    print(f"INFO: OCR extraction started for the file")
     key = os.environ["VISION_KEY"]
     endpoint = os.environ["VISION_ENDPOINT"]
 
     document_intelligence_client = DocumentIntelligenceClient(
         endpoint=endpoint, credential=AzureKeyCredential(key)
     )
-    with open(pdf_path, "rb") as f:
-        poller = document_intelligence_client.begin_analyze_document(
+    poller = document_intelligence_client.begin_analyze_document(
             "prebuilt-invoice",
-            analyze_request=f,
+            analyze_request=file_content,
             content_type="application/octet-stream"
-        )
+    )
     result = poller.result()
     ocr_output = result.as_dict() 
     return ocr_output['content']
