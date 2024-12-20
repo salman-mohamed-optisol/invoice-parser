@@ -8,9 +8,9 @@ from pydantic import BaseModel
 from typing import List
 
 class InvoiceItem(BaseModel):
-    SKU_Price: float
+    SKU_Price: str
     description: str
-    quantity: int
+    quantity: str
 
 class Invoice(BaseModel):
     invoice_id: str
@@ -18,7 +18,7 @@ class Invoice(BaseModel):
     invoice_number: str
     invoice_date: str
     due_date: str
-    total_amount: float
+    total_amount: str
     items: List[InvoiceItem]
     invoice_status: str
     payment_terms: str

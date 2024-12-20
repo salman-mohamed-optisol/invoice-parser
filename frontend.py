@@ -41,7 +41,7 @@ def printer(invoice_dict):
 def main():
     st.title("Invoice Parser")
 
-    uploaded_file = st.file_uploader("Upload a PDF", type="pdf")
+    uploaded_file = st.file_uploader("Upload a file", type=None)
     
     if st.button("OK"):
         if uploaded_file is not None:
