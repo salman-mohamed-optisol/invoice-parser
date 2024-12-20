@@ -26,6 +26,7 @@ class Invoice(BaseModel):
 
 
 def ocr_extraction(pdf_path):
+    print(f"INFO: OCR extraction started for the file {pdf_path}")
     key = os.environ["VISION_KEY"]
     endpoint = os.environ["VISION_ENDPOINT"]
 
