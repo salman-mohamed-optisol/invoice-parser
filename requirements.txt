@@ -1,0 +1,6 @@
+streamlit
+python-dotenv
+azure-ai-documentintelligence
+azure-core
+langchain-openai
+pydantic
